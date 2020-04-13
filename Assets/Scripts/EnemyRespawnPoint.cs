@@ -6,25 +6,17 @@ using UnityEngine;
 
 public class EnemyRespawnPoint : MonoBehaviour
 {
-    public GameObject enemy;
-    public float spawnRate = 2f;
-    float randX;
-    Vector2 whereToSpawn;
-    float nextSpawn = 0.0f;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public GameObject _enemy;
+    [SerializeField] public float SpawnRate = 2f;
+    public float _nextSpawn = 0.0f;
+    private void Start()
+    { }
+    public void Update()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-         if (Time.time > + nextSpawn)
+        if (Time.time > +_nextSpawn)
         {
-          nextSpawn = Time.time + spawnRate;
-          randX = Random.Range(-5,0);
-          whereToSpawn = new Vector2 (randX, transform.position.y);
-          Instantiate (enemy, whereToSpawn, Quaternion.identity);
+            _nextSpawn = Time.time + SpawnRate;
+            Instantiate(_enemy, transform.position, transform.rotation);
         }
     }
 }
