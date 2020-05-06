@@ -9,8 +9,7 @@ public class EnemyRespawnPoint : MonoBehaviour
     [SerializeField] public GameObject _enemy;
     [SerializeField] public float SpawnRate = 2f;
     public float _nextSpawn = 0.0f;
-    private void Start()
-    { }
+    
     public void Update()
     {
         if (Time.time > +_nextSpawn)
