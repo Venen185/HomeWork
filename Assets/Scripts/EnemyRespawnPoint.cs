@@ -1,19 +1,17 @@
-﻿using System.Threading;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyRespawnPoint : MonoBehaviour
 {
-    [SerializeField] public GameObject _enemy;
-    [SerializeField] public float SpawnRate = 2f;
-    public float _nextSpawn = 0.0f;
-    
-    public void Update()
+    [SerializeField] private GameObject _enemy;
+    [SerializeField] private float _spawnRate;
+    private float _timer = 0;
+    private void Update()
     {
-        if (Time.time > +_nextSpawn)
+        _timer += Time.deltaTime;
+
+        if (_timer >= _spawnRate)
         {
-            _nextSpawn = Time.time + SpawnRate;
+            _timer = 0;
             Instantiate(_enemy, transform.position, transform.rotation);
         }
     }
